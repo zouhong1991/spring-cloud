@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>  
-<configuration>  
+<configuration scan="true" scanPeriod="30 seconds">  
     <springProfile name="test">
         <property name="log.path" value="D:\\log\\eurekaServer\\test\\" />  
     </springProfile>  
@@ -7,7 +7,7 @@
         <property name="log.path" value="D:\\log\\eurekaServer\\prod\\" />  
     </springProfile>  
     <springProfile name="dev">  
-        <property name="log.path" value="D:\\log\\eurekaServer\\dev\\" />  
+        <property name="log.path" value="D:\\log\\eurekaServer\\devxxxx\\" />  
     </springProfile>  
     
     <!-- 控制台输出 -->  

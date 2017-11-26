@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.EurekaServer.entity.UserPojo;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+
+//@RestController是@Controller与@ResponseBody的组合
 @RestController
 public class ServerController {
+	
 	Logger log = LoggerFactory.getLogger(ServerController.class);
 	
 	//发起POST请求时，需要设置报文头部Content-Type=application/json，否则会报415错误
@@ -22,4 +25,7 @@ public class ServerController {
 		log.info("name:{},age:{}",userPojo.getName(),userPojo.getAge());
 		return userPojo;
 	}
+	
+	
+	
 }
