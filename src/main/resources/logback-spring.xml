@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
-	<property name="log.path" value="D:\\log\\eurekaServer\\test\\" />
-
-	<!-- 控制台输出 -->
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} [%-20.20method]:%-4line- %msg%n</pattern>
-		</encoder>
-	</appender>
-
-	<!-- 输出到文件 -->
-	<appender name="LOGFILE"
+	<property name="log.path" value="D:\\log\\eurekaServer\\" />
+	<!-- 不带方法名和行号 -->
+	<appender name="LOGFILE1"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<File>${log.path}/eurekaServer.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -18,24 +10,75 @@
 			</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<maxFileSize>10MB</maxFileSize>
+				<maxFileSize>50MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
 			<maxHistory>60</maxHistory>
 			<totalSizeCap>20GB</totalSizeCap>
 		</rollingPolicy>
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} [%-20.20method]:%-4line- %msg%n</pattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} - %msg%n </pattern>
 		</layout>
 	</appender>
-
+	<!-- 只带行号 -->
+<!-- 	<appender name="LOGFILE2"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.path}/eurekaServer.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/eurekaServer-%d{yyyyMMdd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>60</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} %-4line - %msg%n </pattern>
+		</layout>
+	</appender>
+	只带方法名
+	<appender name="LOGFILE3"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.path}/eurekaServer.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/eurekaServer-%d{yyyyMMdd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>60</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} [%-20.20method] - %msg%n </pattern>
+		</layout>
+	</appender>
+	带方法名和行号
+	<appender name="LOGFILE4"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.path}/eurekaServer.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/eurekaServer-%d{yyyyMMdd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>60</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-14.14thread] %-30.30logger{30} [%-20.20method]:%-4line - %msg%n </pattern>
+		</layout>
+	</appender> -->
 	<root level="info">
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="LOGFILE" />
+		<appender-ref ref="LOGFILE1" />
 	</root>
 
-	<logger name="com.EurekaServer" level="DEBUG" additivity="false">
-		<appender-ref ref="STDOUT" />
-		<appender-ref ref="LOGFILE" />
+	<logger name="com.EurekaServer" level="INFO" additivity="false">
+		<appender-ref ref="LOGFILE1" />
 	</logger>
 
 </configuration>  
